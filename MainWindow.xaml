@@ -1,0 +1,32 @@
+﻿<Window x:Class="FocusGUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FocusGUI"
+        mc:Ignorable="d"       
+        Title="Camera Control" Loaded="Window_Loaded">
+    <Grid MinWidth="256">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
+            <TextBlock Margin="8" >Focus</TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <CheckBox IsChecked="{Binding AutoFocusEnabled}" Content="Auto" />
+                <Slider Width="64" Value="{Binding Mode=TwoWay, Path=FocusValue}" Minimum="{Binding FocusProperties.Min}" Maximum="{Binding FocusProperties.Max}" ></Slider>
+                <TextBlock Text="{Binding Path=FocusValue}" Width="15"></TextBlock>
+            </StackPanel>
+            <Separator Margin="8"></Separator>
+            <TextBlock Margin="8">Exposure</TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <CheckBox IsChecked="{Binding AutoExposureEnabled}" Content="Auto" />
+                <Slider Width="64" Value="{Binding Mode=TwoWay, Path=ExposureValue}" Minimum="{Binding ExposureProperties.Min}" Maximum="{Binding ExposureProperties.Max}" ></Slider>
+                <TextBlock Text="{Binding Path=ExposureValue}" Width="15"></TextBlock>
+            </StackPanel>
+            <Separator Margin="8"></Separator>
+        </StackPanel>
+        <Button Width="96" Height="24" Grid.Row="1" Margin="12" Click="Button_Click">Reset</Button>
+    </Grid>
+</Window>

@@ -1,0 +1,12 @@
+﻿<Application x:Class="FocusGUI.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:sys="clr-namespace:System"
+             xmlns:local="clr-namespace:FocusGUI"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+         <sys:String x:Key="CameraName">Microsoft® LifeCam Cinema(TM)</sys:String>
+         <sys:Int32 x:Key="DefaultFocus">17</sys:Int32>
+         <sys:Int32 x:Key="DefaultExposure">-6</sys:Int32>
+    </Application.Resources>
+</Application>
