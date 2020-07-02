@@ -4,9 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FocusGUI"
-        mc:Ignorable="d"       
+        mc:Ignorable="d"
+        SizeToContent="WidthAndHeight"
+        ResizeMode = "CanMinimize"       
         Title="Camera Control" Loaded="Window_Loaded">
     <Grid MinWidth="256">
+        <Grid.Resources>
+            <BooleanToVisibilityConverter x:Key="BoolToVisConverter"/>
+        </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -28,5 +33,18 @@
             <Separator Margin="8"></Separator>
         </StackPanel>
         <Button Width="96" Height="24" Grid.Row="1" Margin="12" Click="Button_Click">Reset</Button>
+        <StackPanel Margin="8" Grid.RowSpan="2" Visibility="{Binding NoCameraFound, Converter={StaticResource BoolToVisConverter}}" 
+        Background="LightGray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <TextBlock>Could not find:</TextBlock>
+            <TextBlock Text="{Binding RequestedCameraName}"></TextBlock>
+            <TextBlock>Available cameras:</TextBlock>
+            <ListBox ItemsSource="{Binding CameraNames}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBox Text="{Binding Mode=OneTime}" HorizontalAlignment="Stretch" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
     </Grid>
 </Window>

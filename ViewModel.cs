@@ -43,18 +43,23 @@ namespace FocusGUI
     {
         private static IAMCameraControl camera;
         private static DsDevice[] devs = DsDevice.GetDevicesOfCat(FilterCategory.VideoInputDevice);
-        public CameraProperties FocusProperties { get; set; }
-        public CameraProperties ExposureProperties { get; set; }
+        public CameraProperties FocusProperties { get; }
+        public CameraProperties ExposureProperties { get; }
+        public bool NoCameraFound { get; }
+        public List<string> CameraNames { get; }
+        public string RequestedCameraName { get; }
 
         public ViewModel()
         {
             if (devs.Length > 0)
             {
-                string _cameraName = (string)Application.Current.Resources["CameraName"];
-                DsDevice cam = (DsDevice)devs.Where(d => d.Name.ToLower().Contains(_cameraName.ToLower())).FirstOrDefault();
+                RequestedCameraName = (string)Application.Current.Resources["CameraName"];
+                CameraNames = new List<String>(devs.Select(d => d.Name));
+                DsDevice cam = (DsDevice)devs.Where(d => d.Name.ToLower().Contains(RequestedCameraName.ToLower())).FirstOrDefault();
 
                 if (cam != null)
                 {
+                    NoCameraFound = false;
                     camera = GetCamera(cam);
 
                     FocusProperties = CameraGetRange(camera, CameraControlProperty.Focus);
@@ -70,8 +75,13 @@ namespace FocusGUI
                 else
                 {
                     // No matching camera found
-                    throw new ArgumentException("Matching camera not found - check the camera name in App Resources");
+                    //throw new ArgumentException("Matching camera not found - check the camera name in App Resources");
+                    NoCameraFound = true;
                 }
+            }
+            else
+            {
+                throw new NotSupportedException("No cameras found");
             }
         }
 

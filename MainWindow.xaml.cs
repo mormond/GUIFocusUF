@@ -15,8 +15,6 @@ namespace FocusGUI
         public MainWindow()
         {
             InitializeComponent();
-            this.SizeToContent = SizeToContent.WidthAndHeight;
-            this.ResizeMode = ResizeMode.CanMinimize;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -30,7 +28,6 @@ namespace FocusGUI
             vm.FocusValue = (int)Application.Current.Resources["DefaultFocus"];
             vm.ExposureValue = (int)Application.Current.Resources["DefaultExposure"];
         }
-
     }
 }
 
