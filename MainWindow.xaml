@@ -20,15 +20,15 @@
             <TextBlock Margin="8" >Focus</TextBlock>
             <StackPanel Orientation="Horizontal">
                 <CheckBox IsChecked="{Binding AutoFocusEnabled}" Content="Auto" />
-                <Slider Width="64" Value="{Binding Mode=TwoWay, Path=FocusValue}" Minimum="{Binding FocusProperties.Min}" Maximum="{Binding FocusProperties.Max}" ></Slider>
-                <TextBlock Text="{Binding Path=FocusValue}" Width="15"></TextBlock>
+                <Slider Margin="8 0" Width="64" Value="{Binding Mode=TwoWay, Path=FocusValue}" Minimum="{Binding FocusProperties.Min}" Maximum="{Binding FocusProperties.Max}" ></Slider>
+                <TextBlock Text="{Binding Path=FocusValue}" Width="32" ></TextBlock>
             </StackPanel>
             <Separator Margin="8"></Separator>
             <TextBlock Margin="8">Exposure</TextBlock>
             <StackPanel Orientation="Horizontal">
                 <CheckBox IsChecked="{Binding AutoExposureEnabled}" Content="Auto" />
-                <Slider Width="64" Value="{Binding Mode=TwoWay, Path=ExposureValue}" Minimum="{Binding ExposureProperties.Min}" Maximum="{Binding ExposureProperties.Max}" ></Slider>
-                <TextBlock Text="{Binding Path=ExposureValue}" Width="15"></TextBlock>
+                <Slider Margin="8 0" Width="64" Value="{Binding Mode=TwoWay, Path=ExposureValue}" Minimum="{Binding ExposureProperties.Min}" Maximum="{Binding ExposureProperties.Max}" ></Slider>
+                <TextBlock Text="{Binding Path=ExposureValue}" Width="32" ></TextBlock>
             </StackPanel>
             <Separator Margin="8"></Separator>
         </StackPanel>
